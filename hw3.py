@@ -1,12 +1,27 @@
-place = int(input("Введите место студента в списке: "))
-
-if place <= 10:
-    score = int(input("Введите общий балл студента: "))
-    print("Поздравляем! Вы поступили!")
+def vklad(summa_vklada, itog_vklada, procent):
+    years = 0
+    summa = summa_vklada
     
-    if score >= 290:
-        print("Бонусов вам будет начислятся стипендия.")
-    else:
-        print("Но вым не хватило баллов для стипендии.")
-else:
-    print("К сожалению, вы не поступили.")
+    while summa < itog_vklada:
+        summa += summa * procent / 100
+        summa = int(summa)  # отбрасываем дробную часть
+        years += 1
+    
+    return years
+
+def main():
+    print("Введите начальную сумму вклада (X):")
+    summa = float(input())
+    
+    print("Введите целевую сумму (Y):")
+    itog_vklada = float(input())
+    
+    print("Введите процентную ставку (P):")
+    procent = float(input())
+    
+    years_needed = vklad(summa_vklada, itog_vklada, procent)
+    
+    print("Количество лет, необходимых для достижения суммы {target_amount}: {years_needed}")
+
+if __name__ == "__main__":
+    main()
